@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pointer
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/HandBase
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase/FingerMiddle
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase/FingerMiddle/FingerTip
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase/FingerMiddle/FingerTip/FingerTip_end
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase.001
+    m_Weight: 1
+  - m_Path: Armature/HandBase/FingerBase.001/FingerMiddle.001
+    m_Weight: 1
+  - m_Path: Armature/HandBase/FingerBase.001/FingerMiddle.001/FingerTip.001
+    m_Weight: 1
+  - m_Path: Armature/HandBase/FingerBase.001/FingerMiddle.001/FingerTip.001/FingerTip.001_end
+    m_Weight: 1
+  - m_Path: Armature/HandBase/FingerBase.002
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase.002/FingerMiddle.002
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase.002/FingerMiddle.002/FingerTip.002
+    m_Weight: 0
+  - m_Path: Armature/HandBase/FingerBase.002/FingerMiddle.002/FingerTip.002/FingerTip.002_end
+    m_Weight: 0
+  - m_Path: Cube
+    m_Weight: 0
