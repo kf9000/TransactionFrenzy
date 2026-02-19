@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class Hand : MonoBehaviour
 {
     //Animation
