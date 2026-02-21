@@ -3,11 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class Conveyor : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 1f;
     public Vector3 direction = Vector3.right;
-    
-    [Header("Animation")]
-    public float textureScrollSpeed = 2f;
     private Renderer rend;
     
     void Start()
@@ -17,7 +14,7 @@ public class Conveyor : MonoBehaviour
 
     void Update()
     {
-        float offset = Time.time * textureScrollSpeed;
+        float offset = Time.time * speed;
         rend.material.mainTextureOffset = new Vector2(offset, 0);
     }
 
