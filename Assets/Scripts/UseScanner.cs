@@ -23,6 +23,19 @@ public class UseScanner : MonoBehaviour
     private void Deactivated(DeactivateEventArgs args)
     {
         ray.SetActive(false);
+
+        if (grab.isSelected)
+        {
+            if (Physics.Raycast(castPoint.transform.position, castPoint.transform.forward, out RaycastHit hit, range, ~ignoredMask))
+            {
+                if(hit.collider.CompareTag("Barcode"))
+                {
+                    Debug.Log("Barcode hit!");
+                }
+                Debug.Log("Hit " + hit.collider.name);
+            }
+
+        }
     }
 
     private void Activated(ActivateEventArgs args)
@@ -30,14 +43,6 @@ public class UseScanner : MonoBehaviour
         if (grab.isSelected)
         {
             ray.SetActive(true);
-
-            if (Physics.Raycast(castPoint.transform.position, castPoint.transform.forward, out RaycastHit hit, range, ~ignoredMask))
-            {
-                if(hit.collider.CompareTag("Barcode"))
-                {
-                    Debug.Log("Barcode hit!");
-                }
-            }
 
         }
     }
