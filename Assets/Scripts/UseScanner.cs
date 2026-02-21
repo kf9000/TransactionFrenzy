@@ -31,6 +31,8 @@ public class UseScanner : MonoBehaviour
                 if(hit.collider.CompareTag("Barcode"))
                 {
                     Debug.Log("Barcode hit!");
+                    Manager.score++;
+                    hit.collider.tag = "Scanned";
                 }
                 Debug.Log("Hit " + hit.collider.name);
             }
@@ -43,7 +45,6 @@ public class UseScanner : MonoBehaviour
         if (grab.isSelected)
         {
             ray.SetActive(true);
-
         }
     }
 

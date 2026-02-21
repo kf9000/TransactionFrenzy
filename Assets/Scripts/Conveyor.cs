@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class Conveyor : MonoBehaviour
 {
-    public float speed = 1f;
     public Vector3 direction = Vector3.right;
     private Renderer rend;
     
@@ -14,7 +13,7 @@ public class Conveyor : MonoBehaviour
 
     void Update()
     {
-        float offset = Time.time * speed;
+        float offset = Time.time * Manager.conveyorSpeed;
         rend.material.mainTextureOffset = new Vector2(offset, 0);
     }
 
@@ -26,7 +25,7 @@ public class Conveyor : MonoBehaviour
 
         if(rigidbody != null)
         {
-            rigidbody.linearVelocity = new Vector3(direction.x * speed, rigidbody.linearVelocity.y, direction.z * speed);
+            rigidbody.linearVelocity = new Vector3(direction.x * Manager.conveyorSpeed, rigidbody.linearVelocity.y, direction.z * Manager.conveyorSpeed);
         }
     }
 }
