@@ -30,8 +30,8 @@ public class UseScanner : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Barcode"))
                 {
-                    Debug.Log("Barcode hit!");
                     Manager.score++;
+                    Debug.Log("Barcode hit! Score: " + Manager.score);
                     hit.collider.tag = "Scanned";
                 }
                 Debug.Log("Hit " + hit.collider.name);

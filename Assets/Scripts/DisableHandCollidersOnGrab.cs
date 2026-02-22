@@ -6,12 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class DisableHandCollidersOnGrab : MonoBehaviour
 {
-    public List<GameObject> hands;
-    List<Collider> allColliders = new List<Collider>();
+    GameObject[] hands;
+    readonly List<Collider> allColliders = new();
 
 
     void Start()
     {
+        hands = GameObject.FindGameObjectsWithTag("Hands");
         foreach (GameObject hand in hands)
         {
             Collider[] colliders = hand.GetComponentsInChildren<Collider>(true);
