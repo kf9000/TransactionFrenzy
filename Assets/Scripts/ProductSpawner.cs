@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class ProductSpawner : MonoBehaviour
 {
-    public GameObject product;
+    public List<GameObject> products;
 
     public void SpawnProduct()
     {
-
-
-        Instantiate(product, transform.position, GetRandomRotation());
-  
+        Instantiate(products[Random.Range(0,products.Count)], transform.position, GetRandomRotation());
     }
 
     Quaternion GetRandomRotation()

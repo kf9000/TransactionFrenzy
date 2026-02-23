@@ -9,14 +9,14 @@ public class UseScanner : MonoBehaviour
     public GameObject ray;
     public GameObject castPoint;
     public float range = 1;
-    LayerMask ignoredMask;
+    LayerMask Mask;
 
 
     void Awake()
     {
     grab.activated.AddListener(Activated);
     grab.deactivated.AddListener(Deactivated);
-    ignoredMask = LayerMask.GetMask("RayVisual");
+    Mask = LayerMask.GetMask("Barcode");
 
     }
 
@@ -26,15 +26,12 @@ public class UseScanner : MonoBehaviour
 
         if (grab.isSelected)
         {
-            if (Physics.Raycast(castPoint.transform.position, castPoint.transform.forward, out RaycastHit hit, range, ~ignoredMask))
+            if (Physics.Raycast(castPoint.transform.position, castPoint.transform.forward, out RaycastHit hit, range, Mask))
             {
                 if(hit.collider.CompareTag("Barcode"))
                 {
-                    Manager.score++;
-                    Debug.Log("Barcode hit! Score: " + Manager.score);
                     hit.collider.tag = "Scanned";
                 }
-                Debug.Log("Hit " + hit.collider.name);
             }
 
         }
