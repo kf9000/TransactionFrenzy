@@ -2,22 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 [RequireComponent(typeof(XRGrabInteractable))]
 public class DisableHandCollidersOnGrab : MonoBehaviour
 {
-    GameObject[] hands;
-    readonly List<Collider> allColliders = new();
+    GameObject rightHand;
+    GameObject leftHand;
+    readonly List<Collider> rightColliders = new();
+    readonly List<Collider> leftColliders = new();
+
 
 
     void Start()
     {
-        hands = GameObject.FindGameObjectsWithTag("Hands");
-        foreach (GameObject hand in hands)
-        {
-            Collider[] colliders = hand.GetComponentsInChildren<Collider>(true);
-            allColliders.AddRange(colliders);
-        }
+        rightHand = GameObject.FindGameObjectWithTag("RightHand");
+
+        Collider[] collidersTempRight = rightHand.GetComponentsInChildren<Collider>(true);
+        rightColliders.AddRange(collidersTempRight);
+
+        leftHand = GameObject.FindGameObjectWithTag("LeftHand");
+
+        Collider[] collidersTempLeft = leftHand.GetComponentsInChildren<Collider>(true);
+        leftColliders.AddRange(collidersTempLeft);
+
 
     }
 
@@ -33,17 +41,44 @@ public class DisableHandCollidersOnGrab : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        foreach (Collider c in allColliders)
+        var interactor = args.interactorObject;
+        GameObject controllerObj = interactor.transform.gameObject;
+        var xrController = controllerObj.GetComponent<NearFarInteractor>();
+        if(xrController.handedness.ToString() == "Right")
         {
-            c.enabled = false;
+            foreach (Collider c in rightColliders)
+            {
+                c.enabled = false;
+            }            
+        }
+        else if (xrController.handedness.ToString() == "Left")
+        {
+            foreach (Collider c in leftColliders)
+            {
+                c.enabled = false;
+            }           
         }
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
-        foreach (Collider c in allColliders)
+        var interactor = args.interactorObject;
+        GameObject controllerObj = interactor.transform.gameObject;
+        var xrController = controllerObj.GetComponent<NearFarInteractor>();
+        if(xrController.handedness.ToString() == "Right")
         {
-            c.enabled = true;
+            foreach (Collider c in rightColliders)
+            {
+                c.enabled = true;
+            }            
         }
+        else if (xrController.handedness.ToString() == "Left")
+        {
+            foreach (Collider c in leftColliders)
+            {
+                c.enabled = true;
+            }           
+        }
+
     }
 }

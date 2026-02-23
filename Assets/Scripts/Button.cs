@@ -6,7 +6,11 @@ using UnityEngine.Events;
 public class Button : MonoBehaviour
 {
     public float threshold = 0.1f;
-    public float deadZone = 0.025f;
+    public float deadZone = 0.05f;
+
+    private float timer = 0f;
+    private bool hasEnoughPassed = false;
+    public float waitTime = 1f;
 
     private bool isPressed;
     private Vector3 startPos;
@@ -18,17 +22,34 @@ public class Button : MonoBehaviour
         joint = GetComponent<ConfigurableJoint>();
     }
 
-
+    void OnEnable()
+    {
+        timer = 0f;   
+        hasEnoughPassed = false;     
+    }
     void Update()
     {
-        if(!isPressed && GetValue() + threshold >= 1)
+        if (!hasEnoughPassed)
         {
-            Pressed();
+            timer += Time.deltaTime;
+
+            if(timer >= 1f)
+            {
+                hasEnoughPassed = true;
+            }
         }
-        if(isPressed && GetValue() - threshold <= 0)
+        else
         {
-            Released();
+            if(!isPressed && GetValue() + threshold >= 1)
+            {
+                Pressed();
+            }
+            if(isPressed && GetValue() - threshold <= 0)
+            {
+                Released();
+            }          
         }
+
     }
 
     private void Pressed()
