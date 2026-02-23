@@ -11,11 +11,11 @@ public class ProductSpawner : MonoBehaviour
     {
 
 
-        Instantiate(product, transform.position, getRandomRotation());
+        Instantiate(product, transform.position, GetRandomRotation());
   
     }
 
-    Quaternion getRandomRotation()
+    Quaternion GetRandomRotation()
     {
         Vector3[] axes = {
             Vector3.up,
