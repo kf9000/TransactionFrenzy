@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public static float conveyorSpeed = 0.4f;
-    public static float spawnSpeed = 1.4f;
+    public static float conveyorSpeed = 0.2f;
+    public static float spawnSpeed = 2f;
     public static int score = 0;
     public static bool gameStarted = false;
     public static int highscore = 0;
@@ -46,7 +46,7 @@ public class Manager : MonoBehaviour
             scoreText.text = "Score: " + score;
         }
 
-        IncreaseDifficulty(1.1f);
+        IncreaseDifficulty(1.05f);
     }
 
     public void StartGame()

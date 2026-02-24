@@ -11,6 +11,7 @@ public class Button : MonoBehaviour
     private float timer = 0f;
     private bool hasEnoughPassed = false;
     public float waitTime = 1f;
+    public AudioSource Click;
 
     private bool isPressed;
     private Vector3 startPos;
@@ -54,6 +55,7 @@ public class Button : MonoBehaviour
 
     private void Pressed()
     {
+        Click.Play();
         isPressed = true;
         onPressed.Invoke();
     }

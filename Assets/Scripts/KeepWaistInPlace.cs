@@ -3,7 +3,7 @@ using UnityEngine;
 public class KeepWaistInPlace : MonoBehaviour
 {
     public Transform xrCamera;     // Assign Main Camera
-    public float waistOffset = 0.7f; // Adjust for player height
+    public float waistOffset = 0.5f; // Adjust for player height
 
     void LateUpdate()
     {

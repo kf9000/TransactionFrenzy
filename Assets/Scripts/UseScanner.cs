@@ -9,6 +9,7 @@ public class UseScanner : MonoBehaviour
     public GameObject ray;
     public GameObject castPoint;
     public float range = 1;
+    public AudioSource Beep;
     LayerMask Mask;
 
 
@@ -30,6 +31,7 @@ public class UseScanner : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Barcode"))
                 {
+                    Beep.Play();
                     hit.collider.tag = "Scanned";
                 }
             }

@@ -6,11 +6,13 @@ public class ProductRemover : MonoBehaviour
 {
     public UnityEvent endGame;
     public bool canAdvanceScore = true;
+    public AudioSource DespawnSound;
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetNamedChild("Barcode") != null && collision.gameObject.GetNamedChild("Barcode").CompareTag("Barcode"))
         {
             endGame.Invoke();
+            DespawnSound.Play();
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.GetNamedChild("Barcode") != null && collision.gameObject.GetNamedChild("Barcode").CompareTag("Scanned"))
@@ -21,8 +23,10 @@ public class ProductRemover : MonoBehaviour
             }
             else
             {
+                
                 endGame.Invoke();
             }
+            DespawnSound.Play();
             Destroy(collision.gameObject);
         }
     }

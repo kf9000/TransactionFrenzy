@@ -6,9 +6,11 @@ using UnityEngine;
 public class ProductSpawner : MonoBehaviour
 {
     public List<GameObject> products;
+    public AudioSource SpawnSound;
 
     public void SpawnProduct()
     {
+        SpawnSound.Play();
         Instantiate(products[Random.Range(0,products.Count)], transform.position, GetRandomRotation());
     }
 
